@@ -1,0 +1,28 @@
+<h2>管理者ログイン</h2>
+<form method="post">
+    <input type="text" name="username" placeholder="ユーザー名">
+    <input type="password" name="password" placeholder="パスワード">
+    <button type="submit">ログイン</button>
+</form>
+🔹 manage.html
+<h2>問題管理</h2>
+<form method="post">
+    <input type="text" name="question" placeholder="問題文"><br>
+    <select name="answer">
+        <option value="True">◯</option>
+        <option value="False">×</option>
+    </select><br>
+    <textarea name="explanation" placeholder="解説"></textarea><br>
+    <button type="submit">追加</button>
+</form>
+
+<hr>
+
+<h3>登録済みの問題</h3>
+<ul>
+{% for q in questions %}
+    <li>{{ q.question }}（<a href="{{ url_for('delete', id=q.id) }}">削除</a>）</li>
+{% endfor %}
+</ul>
+
+<a href="/logout"><button>ログアウト</button></a>
